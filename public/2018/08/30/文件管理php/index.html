@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="个人博客-xiaojinwen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://xiaojinwen.github.io">
+    <!--SEO-->
+
+<meta name="description" content="个人日常"/>
+
+
+
+<meta name="keywords" content="blog"/>
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>文件管理php | 个人博客-xiaojinwen</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="个人博客-xiaojinwen" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='xiaojinwen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> Xiaojw博客-从入门到放弃 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://xiaojinwen.github.io">个人博客-xiaojinwen</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/服务器/"><i class="fa "></i>服务器</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/其他/"><i class="fa "></i>其他</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="文件管理php">
+            
+	            文件管理php
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/后端">
+            后端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/后端" title='后端'>
+                        后端
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/08/30</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="有些代码不是自己写的-所以格式不太同"><a href="#有些代码不是自己写的-所以格式不太同" class="headerlink" title="有些代码不是自己写的 所以格式不太同"></a>有些代码不是自己写的 所以格式不太同</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">function fileAdir($dir) &#123;</span><br><span class="line">	if (!is_dir($dir))&#123;</span><br><span class="line">		mkdir($dir);</span><br><span class="line">		chmod($dir,0777); </span><br><span class="line">		$data = scandir(&quot;$dir&quot;);    </span><br><span class="line">		$allFile = array();        </span><br><span class="line">		foreach ($data as $file) &#123;</span><br><span class="line">			if($file != &apos;.&apos; &amp;&amp; $file != &apos;..&apos;) &#123;    //判断是否是文件夹内的文件夹</span><br><span class="line">				$a = array(</span><br><span class="line">					&apos;file&apos;=&gt;$file,</span><br><span class="line">					&apos;isDir&apos;=&gt;is_dir($dir. &apos;/&apos; .$file),</span><br><span class="line">					&apos;name&apos;=&gt;$dir . &apos;/&apos; .$file</span><br><span class="line">				);</span><br><span class="line">				array_push($allFile, $a);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return $allFile;</span><br><span class="line">	&#125; else&#123;</span><br><span class="line">		$data = scandir(&quot;$dir&quot;); </span><br><span class="line">		$allFile = array();      </span><br><span class="line">		foreach ($data as $file) &#123;</span><br><span class="line">			if($file != &apos;.&apos; &amp;&amp; $file != &apos;..&apos;) &#123;    //判断是否是文件夹内的文件夹</span><br><span class="line">				$a = array(</span><br><span class="line">					&apos;file&apos;=&gt;$file,</span><br><span class="line">					&apos;isDir&apos;=&gt;is_dir($dir. &apos;/&apos; .$file),</span><br><span class="line">					&apos;name&apos;=&gt;$dir . &apos;/&apos; .$file</span><br><span class="line">				);</span><br><span class="line">				array_push($allFile, $a);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return $allFile;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">/**  读取文件类  **/</span><br><span class="line">class file &#123;</span><br><span class="line">    public $file;</span><br><span class="line">    public $filename;  //文件名字</span><br><span class="line">    public $filetype;  //文件类型</span><br><span class="line">    public $filesize;  //文件大小</span><br><span class="line">    public $fileopen;  //打开文件</span><br><span class="line">    public $fileread;  //读取文件</span><br><span class="line"></span><br><span class="line">    //写入变量</span><br><span class="line">    public $filepath;</span><br><span class="line">    public $filecontent;   //保存文件用到的文件内容</span><br><span class="line">    public $fileput;       //文件写入</span><br><span class="line">	public function edits($files)&#123;</span><br><span class="line">        $this-&gt;file = $files;</span><br><span class="line">        if(!file_exists($this-&gt;file))&#123;</span><br><span class="line">            die(&quot;文件不存在！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        $this-&gt;fileopen = fopen($this-&gt;file, &apos;r&apos;);</span><br><span class="line">        if(!$this-&gt;fileopen)&#123;</span><br><span class="line">            die(&quot;文件读取失败&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        //$this-&gt;fileread = htmlspecialchars($this-&gt;fileread);</span><br><span class="line">        //开始获取文件的后缀名</span><br><span class="line">        $filestr = strlen($this-&gt;file);</span><br><span class="line">        $filepoint = strrpos($this-&gt;file, &apos;.&apos;);</span><br><span class="line">        $filesub = substr($this-&gt;file, $filepoint+1);</span><br><span class="line">        $this-&gt;filetype = $filesub;</span><br><span class="line">        $this-&gt;filename = basename($this-&gt;file);</span><br><span class="line">		</span><br><span class="line">		$this-&gt;filesize = filesize($this-&gt;file);</span><br><span class="line">		if($this-&gt;filesize===0)&#123;</span><br><span class="line">				return array(</span><br><span class="line">				&apos;filetype&apos;=&gt;$this-&gt;filetype,</span><br><span class="line">				&apos;filename&apos;=&gt;$this-&gt;filename,</span><br><span class="line">				&apos;filecontent&apos;=&gt;&apos;&apos;,</span><br><span class="line">				&apos;filepath&apos;=&gt;$this-&gt;file</span><br><span class="line">			);</span><br><span class="line">			exit;</span><br><span class="line">		&#125;</span><br><span class="line">        $this-&gt;fileread = fread($this-&gt;fileopen,$this-&gt;filesize);</span><br><span class="line">		// 读取中文</span><br><span class="line">		//$this-&gt;fileread =iconv(&apos;gb2312&apos;, &apos;utf-8&apos;, $this-&gt;fileread); </span><br><span class="line">        //以数组形式返回：文件类型 文件名称 文件内容 文件路径</span><br><span class="line">        return array(</span><br><span class="line">            &apos;filetype&apos;=&gt;$this-&gt;filetype,</span><br><span class="line">            &apos;filename&apos;=&gt;$this-&gt;filename,</span><br><span class="line">            &apos;filecontent&apos;=&gt;$this-&gt;fileread,</span><br><span class="line">            &apos;filepath&apos;=&gt;$this-&gt;file</span><br><span class="line">        );</span><br><span class="line">        //关闭文件</span><br><span class="line">        fclose($this-&gt;file);</span><br><span class="line">    &#125;</span><br><span class="line">    /* 修改文件函数 */</span><br><span class="line">    public function bc($filepath,$filecontent)&#123;</span><br><span class="line">        $this-&gt;filepath = $filepath;</span><br><span class="line">        //访问文件</span><br><span class="line">        $this-&gt;fileopen = file_get_contents($this-&gt;filepath);</span><br><span class="line">        if(!$this-&gt;fileopen)&#123;</span><br><span class="line">            //die(&apos;文件打开失败&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        //获取传进来的文件内容</span><br><span class="line">        $this-&gt;filecontent = $filecontent;</span><br><span class="line">        //反转义html</span><br><span class="line">        //$this-&gt;filecontent = htmlspecialchars_decode($this-&gt;filecontent);</span><br><span class="line">        //写入文件</span><br><span class="line">        $this-&gt;fileput = file_put_contents($this-&gt;filepath, $this-&gt;filecontent);</span><br><span class="line">        if($this-&gt;fileput)&#123;</span><br><span class="line">            return &apos;修改文件成功&apos;;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            return &apos;修改文件失败&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	// 创建文件夹</span><br><span class="line">	public function create_folder($dir) &#123;</span><br><span class="line">        if (!file_exists($dir))&#123;</span><br><span class="line">            //mkdir($dir,0777,true);</span><br><span class="line">            mkdir($dir);</span><br><span class="line">			chmod($dir,0777); </span><br><span class="line">            return &apos;创建文件夹成功&apos;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">			return &apos;创建文件夹已存在&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	// 创建文件</span><br><span class="line">	public function create_file($dir) &#123;</span><br><span class="line">        if (!file_exists($dir))&#123;</span><br><span class="line">            $handle = fopen($dir, &apos;w&apos;);</span><br><span class="line">			chmod($dir,0777); </span><br><span class="line">			if($handle)&#123;</span><br><span class="line">				return &apos;创建文件成功&apos;;</span><br><span class="line">			&#125; else&#123;</span><br><span class="line">				return &apos;创建文件失败&apos;;</span><br><span class="line">			&#125;  </span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &apos;需创建的文件已经存在&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	// 重命名文件/文件夹</span><br><span class="line">	public function fileRename($old_name,$new_name) &#123;</span><br><span class="line">        if(!file_exists($new_name)||file_exists($old_name))&#123;</span><br><span class="line">			$result = rename($old_name,$new_name);</span><br><span class="line">			if($result)&#123;</span><br><span class="line">				return	&apos;重命名成功&apos;;</span><br><span class="line">			&#125; else&#123;</span><br><span class="line">				return	&apos;重命名失败&apos;;</span><br><span class="line">			&#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">			return &apos;目标文件已存在或原文件不存在&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	// 复制文件夹及文件夹下文件</span><br><span class="line">	public function copyDirAndFile($src,$dst) &#123;  // 原目录，复制到的目录</span><br><span class="line">		if(file_exists($src))&#123;</span><br><span class="line">			$dir = opendir($src);</span><br><span class="line">			@mkdir($dst);</span><br><span class="line">			chmod($dst,0777); </span><br><span class="line">			while(false !== ($file = readdir($dir))) &#123;</span><br><span class="line">				if (( $file != &apos;.&apos; ) &amp;&amp; ( $file != &apos;..&apos; )) &#123;</span><br><span class="line">					if (is_dir($src . &apos;/&apos; . $file)) &#123;</span><br><span class="line">						$this-&gt;copyDirAndFile($src . &apos;/&apos; . $file,$dst . &apos;/&apos; . $file);</span><br><span class="line">						chmod($dst . &apos;/&apos; . $file,0777);</span><br><span class="line">					&#125; else &#123;</span><br><span class="line">						copy($src . &apos;/&apos; . $file,$dst . &apos;/&apos; . $file);</span><br><span class="line">						chmod($dst . &apos;/&apos; . $file,0777); </span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			closedir($dir);</span><br><span class="line">			return true;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// 删除文件夹及文件夹下文件</span><br><span class="line">	public function delDirAndFile($dirName)&#123;</span><br><span class="line">		if(file_exists($dirName))&#123;</span><br><span class="line">			if ($handle = opendir(&quot;$dirName&quot; )) &#123;</span><br><span class="line">			   while (false !== ($item=readdir($handle))) &#123;</span><br><span class="line">				   if ($item != &quot;.&quot; &amp;&amp; $item != &quot;..&quot;) &#123;</span><br><span class="line">					   if (is_dir( &quot;$dirName/$item&quot;)) &#123;</span><br><span class="line">							$this-&gt;delDirAndFile( &quot;$dirName/$item&quot; );</span><br><span class="line">					   &#125; else &#123;</span><br><span class="line">							if(unlink( &quot;$dirName/$item&quot; ))&#123;</span><br><span class="line">								// echo &quot;成功删除文件： $dirName/$item\n&quot;;</span><br><span class="line">							&#125;	</span><br><span class="line">					   &#125;</span><br><span class="line">				   &#125;</span><br><span class="line">			   &#125;</span><br><span class="line">			   closedir( $handle );</span><br><span class="line">			   if(rmdir( $dirName )) &#123;</span><br><span class="line">				   // echo &quot;成功删除目录： $dirName\n&quot;;</span><br><span class="line">			   &#125;</span><br><span class="line">			&#125;</span><br><span class="line">			return true;</span><br><span class="line">		&#125; else&#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 剪切文件夹及文件夹下文件</span><br><span class="line">	public function cutDirAndFile($src,$dst) &#123;  // 原目录，复制到的目录</span><br><span class="line">		if(file_exists($src))&#123;</span><br><span class="line">			$dir = opendir($src);</span><br><span class="line">			@mkdir($dst);</span><br><span class="line">			chmod($dst,0777); </span><br><span class="line">			while(false !== ($file = readdir($dir))) &#123;</span><br><span class="line">				if (( $file != &apos;.&apos; ) &amp;&amp; ( $file != &apos;..&apos; )) &#123;</span><br><span class="line">					if (is_dir($src . &apos;/&apos; . $file)) &#123;</span><br><span class="line">						$this-&gt;copyDirAndFile($src . &apos;/&apos; . $file,$dst . &apos;/&apos; . $file);</span><br><span class="line">						chmod($dst . &apos;/&apos; . $file,0777);</span><br><span class="line">					&#125; else &#123;</span><br><span class="line">						copy($src . &apos;/&apos; . $file,$dst . &apos;/&apos; . $file);</span><br><span class="line">						chmod($dst . &apos;/&apos; . $file,0777); </span><br><span class="line">						//unlink($src . &apos;/&apos; . $file);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			$file = new file();</span><br><span class="line">			$delete = $file-&gt;delDirAndFile($src);</span><br><span class="line">			if(!$delete)&#123;</span><br><span class="line">				return &apos;文件夹删除失败&apos;;</span><br><span class="line">			&#125;</span><br><span class="line">			$file = null;</span><br><span class="line">			closedir($dir);</span><br><span class="line">			return true;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// 复制单个文件</span><br><span class="line">	public function fileCopy($source_name,$target_name) &#123;</span><br><span class="line">        if(!file_exists($target_name)||file_exists($source_name))&#123;</span><br><span class="line">			//return copy($source_name,$target_name)?true:false;</span><br><span class="line">			$result = copy($source_name,$target_name);</span><br><span class="line">			chmod($target_name,0777); </span><br><span class="line">			return $result;</span><br><span class="line">			if($result)&#123;</span><br><span class="line">				return &apos;复制文件成功&apos;;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				return &apos;复制文件失败&apos;;</span><br><span class="line">			&#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &apos;目标文件已经存在或者原始文件不存在&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	// 删除单个文件</span><br><span class="line">	public function fileDelete($del_name) &#123;</span><br><span class="line">        if(file_exists($del_name))&#123;</span><br><span class="line">			$result = unlink($del_name);</span><br><span class="line">			if($result)&#123;</span><br><span class="line">				return &apos;删除文件成功&apos;;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				return &apos;删除文件失败&apos;;</span><br><span class="line">			&#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &apos;要删除的文件不存在&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	// 剪切单个文件</span><br><span class="line">	public function fileCut($source_name,$target_name) &#123;</span><br><span class="line">        if(!file_exists($target_name)||file_exists($source_name))&#123;</span><br><span class="line">			//return copy($source_name,$target_name)?true:false;</span><br><span class="line">			$result = copy($source_name,$target_name);</span><br><span class="line">			chmod($target_name,0777); </span><br><span class="line">			unlink($source_name);</span><br><span class="line">			if($result)&#123;</span><br><span class="line">				return &apos;剪切文件成功&apos;;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				return &apos;剪切文件失败&apos;;</span><br><span class="line">			&#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &apos;目标文件已经存在或者原始文件不存在&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Sxiaojinwen</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/08/30/删除服务器乱码文件/" class="pre-post btn btn-default" title='删除服务器乱码文件/目录'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">删除服务器乱码文件/目录</span>
+        </a>
+    
+    
+        <a href="/2018/08/29/hexo 常用命令/" class="next-post btn btn-default" title='hexo 常用命令'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">hexo 常用命令</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'OBEaVgVtX4RcSOo3GfvTegnT-gzGzoHsz',
+            appKey: 'o20EHecH1QoHIwMDHGhg9Qpq',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: ''.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#有些代码不是自己写的-所以格式不太同"><span class="toc-text">有些代码不是自己写的 所以格式不太同</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
