@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="个人博客-xiaojinwen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://xiaojinwen.github.io">
+    <!--SEO-->
+
+<meta name="description" content="个人日常"/>
+
+
+
+<meta name="keywords" content="blog"/>
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>数组与字符串的那些相似方法 | 个人博客-xiaojinwen</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="个人博客-xiaojinwen" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='xiaojinwen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> Xiaojw博客-从入门到放弃 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://xiaojinwen.github.io">个人博客-xiaojinwen</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/服务器/"><i class="fa "></i>服务器</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/其他/"><i class="fa "></i>其他</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="数组与字符串的那些相似方法">
+            
+	            数组与字符串的那些相似方法
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/前端" title='前端'>
+                        前端
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/09/04</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="一、字符串方法"><a href="#一、字符串方法" class="headerlink" title="一、字符串方法"></a>一、字符串方法</h2><h3 id="1、slice-提取字符串的片断，并在新的字符串中返回被提取的部分。"><a href="#1、slice-提取字符串的片断，并在新的字符串中返回被提取的部分。" class="headerlink" title="1、slice() 提取字符串的片断，并在新的字符串中返回被提取的部分。"></a>1、slice() 提取字符串的片断，并在新的字符串中返回被提取的部分。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stringObject.slice(start,end) </span><br><span class="line">// start	起始下标  负数时,从尾部开始算起位置: -1 最后,-2 倒数二</span><br><span class="line">// end 		结束下标  省略时,表示到最后,负数时,同上</span><br><span class="line"></span><br><span class="line">// e.g.</span><br><span class="line">var str=<span class="string">"Hello happy world!"</span></span><br><span class="line">console.log(str.slice(6))</span><br><span class="line">// happy world!</span><br></pre></td></tr></table></figure>
+<h3 id="2、substr-从起始索引号提取字符串中指定数目的字符。-不建议使用-ECMAscript没有对该方法进行标准化"><a href="#2、substr-从起始索引号提取字符串中指定数目的字符。-不建议使用-ECMAscript没有对该方法进行标准化" class="headerlink" title="2、substr() 从起始索引号提取字符串中指定数目的字符。(不建议使用 ECMAscript没有对该方法进行标准化)"></a>2、substr() 从起始索引号提取字符串中指定数目的字符。(不建议使用 ECMAscript没有对该方法进行标准化)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stringObject.substr(start,length)</span><br><span class="line">// start  必须 起始下标,num 负数时,从尾部开始算起位置: -1 最后,-2 倒数二</span><br><span class="line">// length 可选 长度,num     省略时,表示到最后</span><br><span class="line"></span><br><span class="line">// e.g.</span><br><span class="line">var str=<span class="string">"Hello world!"</span></span><br><span class="line">console.log(str.substr(3))</span><br><span class="line">// lo world!</span><br></pre></td></tr></table></figure>
+<h3 id="3、substring-提取字符串中两个指定的索引号之间的字符。"><a href="#3、substring-提取字符串中两个指定的索引号之间的字符。" class="headerlink" title="3、substring() 提取字符串中两个指定的索引号之间的字符。"></a>3、substring() 提取字符串中两个指定的索引号之间的字符。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">stringObject.substring(start,stop)</span><br><span class="line">// start 必须 非负整 起始下标,num</span><br><span class="line">// stop  可选 非负整 比要提取位置+1 省略时,表示到最后</span><br><span class="line"></span><br><span class="line">// e.g.</span><br><span class="line">var str=<span class="string">"Hello world!"</span></span><br><span class="line">console.log(str.substring(3))</span><br><span class="line">console.log(str.substring(3,7))</span><br><span class="line"></span><br><span class="line">// lo world!</span><br><span class="line">// lo w</span><br></pre></td></tr></table></figure>
+<h3 id="4、concat-连接字符串。"><a href="#4、concat-连接字符串。" class="headerlink" title="4、concat() 连接字符串。"></a>4、concat() 连接字符串。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">stringObject.concat(stringX,stringX,...,stringX)</span><br><span class="line"></span><br><span class="line">// e.g.</span><br><span class="line">var str1=<span class="string">"Hello "</span></span><br><span class="line">var str2=<span class="string">"world!"</span></span><br><span class="line">console.log(str1.concat(str2))</span><br><span class="line">// Hello world!</span><br></pre></td></tr></table></figure>
+<h3 id="5、split-把字符串分割为字符串数组。"><a href="#5、split-把字符串分割为字符串数组。" class="headerlink" title="5、split() 把字符串分割为字符串数组。"></a>5、split() 把字符串分割为字符串数组。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stringObject.split(separator,howmany)</span><br><span class="line">// separator 必需 字符串或正则 切割符号</span><br><span class="line">// howmany   可选 最大返回长度 省略忽视最大返回长度</span><br></pre></td></tr></table></figure>
+<p>注：如果把空字符串 (“”) 用作 separator，那么 stringObject 中的每个字符之间都会被分割<br>注：String.split()与 Array.join 执行的操作是相反的</p>
+<h3 id="6、others"><a href="#6、others" class="headerlink" title="6、others"></a>6、others</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">charAt()		返回在指定位置的字符。</span><br><span class="line">indexOf()		检索字符串。返回位置</span><br><span class="line">lastIndexOf()		从后向前搜索字符串。返回位置</span><br><span class="line">match()			找到一个或多个正则表达式的匹配。</span><br><span class="line">replace()		替换与正则表达式匹配的子串。</span><br><span class="line">search()		检索与正则表达式相匹配的值。</span><br><span class="line">sub()			把字符串显示为下标。</span><br><span class="line">sup()			把字符串显示为上标。</span><br><span class="line">toLocaleLowerCase()	把字符串转换为小写。</span><br><span class="line">toLocaleUpperCase()	把字符串转换为大写。</span><br><span class="line">toLowerCase()		把字符串转换为小写。</span><br><span class="line">toUpperCase()		把字符串转换为大写。</span><br><span class="line">toString()		返回字符串。</span><br><span class="line">valueOf()		返回某个字符串对象的原始值。</span><br></pre></td></tr></table></figure>
+<h2 id="二、数组方法"><a href="#二、数组方法" class="headerlink" title="二、数组方法"></a>二、数组方法</h2><h3 id="1、concat-连接两个或更多的数组，并返回结果。"><a href="#1、concat-连接两个或更多的数组，并返回结果。" class="headerlink" title="1、concat() 连接两个或更多的数组，并返回结果。"></a>1、concat() 连接两个或更多的数组，并返回结果。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.concat(arrayX,arrayX,......,arrayX)</span><br><span class="line"></span><br><span class="line">// e.g.</span><br><span class="line">var arr1=[<span class="string">'hello'</span>];</span><br><span class="line">var arr2=[<span class="string">'world!'</span>];</span><br><span class="line">console.log(arr1.concat(arr2))</span><br><span class="line">// [<span class="string">'Hello'</span>,<span class="string">'world!'</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="2、slice-从某个已有的数组返回选定的元素-不修改原数组"><a href="#2、slice-从某个已有的数组返回选定的元素-不修改原数组" class="headerlink" title="2、slice() 从某个已有的数组返回选定的元素(不修改原数组)"></a>2、slice() 从某个已有的数组返回选定的元素(不修改原数组)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.slice(start,end)</span><br><span class="line">// start 必需 起始下标  负数时,从尾部开始算起位置: -1 最后,-2 倒数二</span><br><span class="line">// end   可选 结束下标  省略时,表示到最后,负数时,同上</span><br><span class="line"></span><br><span class="line">// e.g.</span><br><span class="line">var arr=[<span class="string">'thank'</span>,<span class="string">'you'</span>,<span class="string">'very'</span>,<span class="string">'math'</span>];</span><br><span class="line">console.log(arr.slice(2,3))</span><br><span class="line">console.log(arr)</span><br><span class="line"></span><br><span class="line">// [<span class="string">'very'</span>]</span><br><span class="line">// [<span class="string">'thank'</span>,<span class="string">'you'</span>,<span class="string">'very'</span>,<span class="string">'math'</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="3、splice-删除元素，并向数组添加新元素-改变原数组"><a href="#3、splice-删除元素，并向数组添加新元素-改变原数组" class="headerlink" title="3、splice() 删除元素，并向数组添加新元素(改变原数组)"></a>3、splice() 删除元素，并向数组添加新元素(改变原数组)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.splice(index,howmany,item1,.....,itemX)</span><br><span class="line">// index 		必需 起始下标  负数时,从尾部开始算起位置: -1 最后,-2 倒数二</span><br><span class="line">// howmany   		可选 删除数量  0:不删</span><br><span class="line">// item1,.....,itemX   	可选 增加新项</span><br><span class="line"></span><br><span class="line">// e.g.</span><br><span class="line">var arr=[<span class="string">'thank'</span>,<span class="string">'you'</span>,<span class="string">'very'</span>,<span class="string">'math'</span>];</span><br><span class="line">console.log(arr.splice(1,1,<span class="string">'xjw'</span>))</span><br><span class="line">console.log(arr)</span><br><span class="line"></span><br><span class="line">// [<span class="string">'you'</span>]</span><br><span class="line">// [<span class="string">'thank'</span>,<span class="string">'xjw'</span>,<span class="string">'very'</span>,<span class="string">'math'</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="4、others"><a href="#4、others" class="headerlink" title="4、others"></a>4、others</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">join() 	   把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。</span><br><span class="line">pop()  	   删除并返回数组的最后一个元素</span><br><span class="line">push()     向数组的末尾添加一个或更多元素，并返回新的长度。</span><br><span class="line"><span class="built_in">shift</span>()    删除并返回数组的第一个元素</span><br><span class="line">unshift()  向数组的开头添加一个或更多元素，并返回新的长度。</span><br><span class="line">reverse()  颠倒数组中元素的顺序。</span><br><span class="line">sort()     对数组的元素进行排序 注:a-b 正数换位置</span><br><span class="line">toString() 把数组转换为字符串，并返回结果。</span><br><span class="line">valueOf()  返回数组对象的原始值</span><br></pre></td></tr></table></figure>
+<h2 id="三、字符串与数据都有的方法"><a href="#三、字符串与数据都有的方法" class="headerlink" title="三、字符串与数据都有的方法"></a>三、字符串与数据都有的方法</h2><p>1.slice()<br>2.concat()</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">xiaojinwen</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/08/31/phpMyAdmin无法登陆解决/" class="next-post btn btn-default" title='phpMyAdmin无法登陆解决'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">phpMyAdmin无法登陆解决</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'OBEaVgVtX4RcSOo3GfvTegnT-gzGzoHsz',
+            appKey: 'o20EHecH1QoHIwMDHGhg9Qpq',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、字符串方法"><span class="toc-text">一、字符串方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、slice-提取字符串的片断，并在新的字符串中返回被提取的部分。"><span class="toc-text">1、slice() 提取字符串的片断，并在新的字符串中返回被提取的部分。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、substr-从起始索引号提取字符串中指定数目的字符。-不建议使用-ECMAscript没有对该方法进行标准化"><span class="toc-text">2、substr() 从起始索引号提取字符串中指定数目的字符。(不建议使用 ECMAscript没有对该方法进行标准化)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、substring-提取字符串中两个指定的索引号之间的字符。"><span class="toc-text">3、substring() 提取字符串中两个指定的索引号之间的字符。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、concat-连接字符串。"><span class="toc-text">4、concat() 连接字符串。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、split-把字符串分割为字符串数组。"><span class="toc-text">5、split() 把字符串分割为字符串数组。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、others"><span class="toc-text">6、others</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、数组方法"><span class="toc-text">二、数组方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、concat-连接两个或更多的数组，并返回结果。"><span class="toc-text">1、concat() 连接两个或更多的数组，并返回结果。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、slice-从某个已有的数组返回选定的元素-不修改原数组"><span class="toc-text">2、slice() 从某个已有的数组返回选定的元素(不修改原数组)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、splice-删除元素，并向数组添加新元素-改变原数组"><span class="toc-text">3、splice() 删除元素，并向数组添加新元素(改变原数组)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、others"><span class="toc-text">4、others</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、字符串与数据都有的方法"><span class="toc-text">三、字符串与数据都有的方法</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span> | 
+				<span>Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+				</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

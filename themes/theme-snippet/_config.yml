@@ -57,8 +57,8 @@ jsonContent:
     title: true
     text: true
     content: true
-    categories: true
-    tags: true
+    categories: false
+    tags: false
 
 ## 网站公告设置
 notification: |-
@@ -77,7 +77,7 @@ social:
    href: mailto:1058330410@qq.com
  - name: 联系QQ
    icon: qq
-   href: //wpa.qq.com/msgrd?v=3&uin=1058330410&site=qq&menu=yes
+   href: tencent://message/?uin=1058330410&Site=https://xiaojw.xyz/&Meu=yes
  - name: 微信
    icon: weixin
    href: /
@@ -145,7 +145,7 @@ declaration:
   enable: true
   title: '转载声明'
   tip: |-
-      商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Sxiaojinwen</a>
+      商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">xiaojinwen</a>
 
 
 ## 主题评论

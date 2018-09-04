@@ -1,9 +1,0 @@
-{"name":"hexo","hostname":"DESKTOP-7NLNOT5","pid":2004,"level":20,"msg":"Hexo version: 3.7.1","time":"2018-08-30T01:57:11.067Z","v":0}
-{"name":"hexo","hostname":"DESKTOP-7NLNOT5","pid":2004,"level":20,"msg":"Working directory: D:\\project\\blog\\","time":"2018-08-30T01:57:11.069Z","v":0}
-{"name":"hexo","hostname":"DESKTOP-7NLNOT5","pid":2004,"level":20,"msg":"Config loaded: D:\\project\\blog\\_config.yml","time":"2018-08-30T01:57:11.146Z","v":0}
-{"name":"hexo","hostname":"DESKTOP-7NLNOT5","pid":2004,"level":50,"err":{"message":"EISDIR: illegal operation on a directory, read","name":"Error","stack":"Error: EISDIR: illegal operation on a directory, read","code":"EISDIR"},"msg":"Plugin load failed: hexo-renderer-marked","time":"2018-08-30T01:57:11.161Z","v":0}
-{"name":"hexo","hostname":"DESKTOP-7NLNOT5","pid":2004,"level":50,"err":{"message":"EISDIR: illegal operation on a directory, read","name":"Error","stack":"Error: EISDIR: illegal operation on a directory, read","code":"EISDIR"},"msg":"Plugin load failed: hexo-renderer-stylus","time":"2018-08-30T01:57:11.161Z","v":0}
-{"name":"hexo","hostname":"DESKTOP-7NLNOT5","pid":2004,"level":20,"msg":"Plugin loaded: hexo-deployer-git","time":"2018-08-30T01:57:11.177Z","v":0}
-{"name":"hexo","hostname":"DESKTOP-7NLNOT5","pid":2004,"level":50,"err":{"message":"EISDIR: illegal operation on a directory, read","name":"Error","stack":"Error: EISDIR: illegal operation on a directory, read","code":"EISDIR"},"msg":"Plugin load failed: hexo-server","time":"2018-08-30T01:57:11.177Z","v":0}
-{"name":"hexo","hostname":"DESKTOP-7NLNOT5","pid":2004,"level":20,"msg":"Script loaded: themes\\landscape\\scripts\\fancybox.js","time":"2018-08-30T01:57:11.193Z","v":0}
-{"name":"hexo","hostname":"DESKTOP-7NLNOT5","pid":2004,"level":20,"msg":"Database saved","time":"2018-08-30T01:57:11.193Z","v":0}

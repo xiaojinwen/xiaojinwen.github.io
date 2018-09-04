@@ -31,7 +31,7 @@
     <!--Title-->
 
 
-<title>hexo 常用命令 | 个人博客-xiaojinwen</title>
+<title>使用canvas画环形进度条 | 个人博客-xiaojinwen</title>
 
 
     <link rel="alternate" href="/atom.xml" title="个人博客-xiaojinwen" type="application/atom+xml">
@@ -144,9 +144,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="hexo 常用命令">
+        <h1 id="使用canvas画环形进度条">
             
-	            hexo 常用命令
+	            使用canvas画环形进度条
             
         </h1>
         <div class="post-meta">
@@ -154,8 +154,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/其他">
-            其他
+        <a href="/categories/前端">
+            前端
         </a>
     </span>
     
@@ -165,8 +165,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/其他" title='其他'>
-                        其他
+                    <a href="/tags/前端" title='前端'>
+                        前端
                     </a>
                 
             
@@ -188,16 +188,9 @@
     </div>
     
     <div class="post-body post-content">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<h3 id="列出已安装依赖-局部-全局"><a href="#列出已安装依赖-局部-全局" class="headerlink" title="列出已安装依赖(局部/全局)"></a>列出已安装依赖(局部/全局)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm ls --depth 0 </span><br><span class="line">$ npm ls --depth 0 -g</span><br></pre></td></tr></table></figure>
+        <h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p><img src="http://119.29.143.126:1234/blog_file/canvas.png" alt="无法展示图片"></p>
+<h3 id="html"><a href="#html" class="headerlink" title="html"></a>html</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;canvas id=<span class="string">"myCanvas"</span> width=<span class="string">"300"</span> height=<span class="string">"150"</span> style=<span class="string">"border:1px solid #d3d3d3;"</span>&gt;</span><br><span class="line">	Your browser does not support the HTML5 canvas tag.</span><br><span class="line">&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">let</span> canvas = document.getElementById(<span class="string">'myCanvas'</span>)</span><br><span class="line"><span class="built_in">let</span> ctx = canvas.getContext(<span class="string">'2d'</span>)</span><br><span class="line">// 绘制 灰色层 底层</span><br><span class="line">ctx.beginPath()</span><br><span class="line">ctx.arc(100, 75, 50, 0, 2 * Math.PI)</span><br><span class="line">ctx.lineWidth = 10</span><br><span class="line">ctx.strokeStyle = <span class="string">"#eee"</span>;</span><br><span class="line">ctx.stroke()</span><br><span class="line">// 绘制 蓝色层 进度层</span><br><span class="line">ctx.beginPath()</span><br><span class="line">ctx.arc(100, 75, 50, -Math.PI / 2, 0)</span><br><span class="line">ctx.lineWidth = 10</span><br><span class="line">ctx.strokeStyle = <span class="string">"#489cff"</span>;</span><br><span class="line">ctx.stroke()</span><br><span class="line">// 绘制文字层</span><br><span class="line">ctx.font = <span class="string">"20px Verdana"</span>;</span><br><span class="line">/* 渐变</span><br><span class="line"><span class="built_in">let</span> gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);</span><br><span class="line">gradient.addColorStop(0, <span class="string">"magenta"</span>);</span><br><span class="line">gradient.addColorStop(0.5, <span class="string">"blue"</span>);</span><br><span class="line">gradient.addColorStop(1, <span class="string">"red"</span>);</span><br><span class="line">ctx.fillStyle = gradient;</span><br><span class="line">*/</span><br><span class="line">ctx.fillStyle = <span class="string">"#666"</span>;</span><br><span class="line">ctx.fillText(<span class="string">"25%"</span>, 80, 84)</span><br></pre></td></tr></table></figure>
     </div>
 
     <div class="post-footer">
@@ -214,15 +207,15 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/08/30/动态路由-路由访问权限/" class="pre-post btn btn-default" title='动态路由-路由访问权限'>
+        <a href="/2018/08/31/phpMyAdmin无法登陆解决/" class="pre-post btn btn-default" title='phpMyAdmin无法登陆解决'>
             <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">动态路由-路由访问权限</span>
+            <span class="hidden-xs">phpMyAdmin无法登陆解决</span>
         </a>
     
     
-        <a href="/2018/08/30/删除服务器乱码文件/" class="next-post btn btn-default" title='删除服务器乱码文件/目录'>
+        <a href="/2018/08/30/自定义百度云分享密码/" class="next-post btn btn-default" title='自定义百度云分享密码'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">删除服务器乱码文件/目录</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">自定义百度云分享密码</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -265,7 +258,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出已安装依赖-局部-全局"><span class="toc-text">列出已安装依赖(局部/全局)</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#效果展示"><span class="toc-text">效果展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html"><span class="toc-text">html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js"><span class="toc-text">js</span></a></li></ol>
         
     </div>
 </aside>
