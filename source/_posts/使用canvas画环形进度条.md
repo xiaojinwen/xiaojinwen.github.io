@@ -8,7 +8,7 @@ comments: true
 
 ### 效果展示
 
-![无法展示图片](http://119.29.143.126/blog_file/canvas.png)
+![无法展示图片](http://web.xiaojw.xyz/blog_file/canvas.png)
 
 
 ### html

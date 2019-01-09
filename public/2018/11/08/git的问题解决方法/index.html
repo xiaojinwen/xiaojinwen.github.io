@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="个人博客-xiaojinwen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://xiaojinwen.github.io">
+    <!--SEO-->
+
+<meta name="description" content="个人日常"/>
+
+
+
+<meta name="keywords" content="blog"/>
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>git的问题解决方法 | 个人博客-xiaojinwen</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="个人博客-xiaojinwen" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='xiaojinwen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> Xiaojw博客-从入门到放弃 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://xiaojinwen.github.io">个人博客-xiaojinwen</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/服务器/"><i class="fa "></i>服务器</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/其他/"><i class="fa "></i>其他</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="git的问题解决方法">
+            
+	            git的问题解决方法
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/其他">
+            其他
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/其他" title='其他'>
+                        其他
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/11/08</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="正常提交文件"><a href="#正常提交文件" class="headerlink" title="正常提交文件"></a>正常提交文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init (第一次需要)</span><br><span class="line">git add . (./表示所有文件  可指定文件夹/文件)</span><br><span class="line">git remote add origin git@github.com:xxxxgit.git (第一次需要)(ssh链接上传代码大小没有限制)</span><br><span class="line">git commit -m<span class="string">"xxxx"</span></span><br><span class="line">git push -u origin master /git push origin master</span><br></pre></td></tr></table></figure>
+<h1 id="不正常提交文件"><a href="#不正常提交文件" class="headerlink" title="不正常提交文件"></a>不正常提交文件</h1><h2 id="git-push-不上去-因为远程仓库有修改但本地没有拉取"><a href="#git-push-不上去-因为远程仓库有修改但本地没有拉取" class="headerlink" title="git push 不上去,因为远程仓库有修改但本地没有拉取"></a>git push 不上去,因为远程仓库有修改但本地没有拉取</h2><p>git stash 介绍<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash /git stash save <span class="string">"info"</span>  // 将文件保存到暂存区</span><br><span class="line">git stash list // 查看暂存区列表</span><br><span class="line">git stash pop 将暂存区的内容弹出,并应用到当前分支对应的工作目录上.</span><br></pre></td></tr></table></figure></p>
+<p>–rebase 介绍<br>告诉Git把小红的提交移到同步了中央仓库修改后的master分支的顶部</p>
+<h2 id="解决1"><a href="#解决1" class="headerlink" title="解决1"></a>解决1</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase origin master // 拉取远程仓库文件并把本地修改的文件置分支顶部</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>rebase操作过程是把本地提交一次一个地迁移到更新了的中央仓库master分支之上。 这意味着可能要解决在迁移某个提交时出现的合并冲突，而不是解决包含了所有提交的大型合并时所出现的冲突。 这样的方式让你尽可能保持每个提交的聚焦和项目历史的整洁。反过来，简化了哪里引入Bug的分析，如果有必要，回滚修改也可以做到对项目影响最小。</p>
+<p>如果小红和小明的功能是不相关的，不大可能在rebase过程中有冲突。如果有，Git在合并有冲突的提交处暂停rebase过程，输出下面的信息并带上相关的指令：</p>
+<p><code>CONFLICT (content): Merge conflict in &lt;some-file&gt;</code></p>
+<p><code>git status</code> 命令来查看哪里有问题<br>接着小红编辑这些文件。修改完成后，用老套路暂存这些文件，并让git rebase完成剩下的事：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;some-file&gt; </span><br><span class="line">git rebase --<span class="built_in">continue</span></span><br><span class="line"></span><br><span class="line">git rebase --abort // 回到你执行git pull --rebase命令前的样子：</span><br><span class="line">```</span><br></pre></td></tr></table></figure></p>
+<h2 id="解决2"><a href="#解决2" class="headerlink" title="解决2"></a>解决2</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git stash save <span class="string">"info"</span>  // 将本次修改文件提交到暂存区</span><br><span class="line">git pull --rebase origin master // 拉取远程仓库文件并把本地修改的文件置分支顶部</span><br><span class="line">git stash pop // 放出暂存区修改</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>// master<br>git stash save “info”  // 将本次修改文件提交到暂存区<br>git checkout dev<br>git stash pop // 放出暂存区修改</p>
+<h1 id="开发新功能"><a href="#开发新功能" class="headerlink" title="开发新功能"></a>开发新功能</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b marys-feature master</span><br><span class="line">// 相当于</span><br><span class="line">git checkout -b marys-feature</span><br><span class="line">git merge master</span><br></pre></td></tr></table></figure>
+<p>这个命令检出一个基于master名为marys-feature的分支，Git的-b选项表示如果分支还不存在则新建分支。 这个新分支上，小红按老套路编辑、暂存和提交修改，按需要提交以实现功能：</p>
+<p><code>git push -u origin marys-feature</code></p>
+<p>这条命令push marys-feature分支到中央仓库（origin），-u选项设置本地分支去跟踪远程对应的分支。 设置好跟踪的分支后，小红就可以使用git push命令省去指定推送分支的参数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git pull</span><br><span class="line">git pull origin marys-feature</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h1 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff dev // 不使用fast-forward方式合并，保留分支的commit历史</span><br><span class="line">git merge --squash dev // 使用squash方式合并，把多次分支commit历史压缩为一次 之后要提交一次</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">xiaojinwen</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/01/04/vue-element-控制字段排序与显示小组件/" class="pre-post btn btn-default" title='vue-element-控制字段排序与显示小组件'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">vue-element-控制字段排序与显示小组件</span>
+        </a>
+    
+    
+        <a href="/2018/10/25/es6学习/" class="next-post btn btn-default" title='es6学习'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">es6学习</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'OBEaVgVtX4RcSOo3GfvTegnT-gzGzoHsz',
+            appKey: 'o20EHecH1QoHIwMDHGhg9Qpq',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正常提交文件"><span class="toc-text">正常提交文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不正常提交文件"><span class="toc-text">不正常提交文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#git-push-不上去-因为远程仓库有修改但本地没有拉取"><span class="toc-text">git push 不上去,因为远程仓库有修改但本地没有拉取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决1"><span class="toc-text">解决1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决2"><span class="toc-text">解决2</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开发新功能"><span class="toc-text">开发新功能</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#合并分支"><span class="toc-text">合并分支</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span> | 
+				<span>Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+				</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
