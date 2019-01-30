@@ -111,7 +111,7 @@ branding: Xiaojw博客-从入门到放弃
 
 ## 设置banner背景图片
 banner:
-    img: http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg
+    img: http://snippet.shenliyang.com/img/banner.jpg
 
 ## 首页列表底部面板
 homePanel: true

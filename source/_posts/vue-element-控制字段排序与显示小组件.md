@@ -48,15 +48,17 @@ switch (this.$route.path) {
             {prop: 'name', label: '姓名', width: '100', show: true},
             {prop: 'phone', label: '手机号', width: '150', show: true}
           ],
-          title: '全部'
+          title: '全部',
+          vision: '1'
         },
         {
-              list: [
-                {prop: 'name', label: '姓名', width: '100', show: true},
-                {prop: 'status', label: '状态', width: '150', show: true}
-              ],
-              title: '未处理'
-            }
+          list: [
+            {prop: 'name', label: '姓名', width: '100', show: true},
+            {prop: 'status', label: '状态', width: '150', show: true}
+          ],
+          title: '未处理',
+          vision: '1'
+        }
       ]
       break;
     }
@@ -173,6 +175,26 @@ order-setting.vue
       },
       changeShowContent() {
         if (this.$route.path.includes("order")) {
+            if (this.getShowContentList && this.getShowContentList[this.$route.path]) {
+                // 当字段更新时 vision 需要修改和之前不一样的值 缓存的值才会重新赋值
+                if (this.getShowContentList[this.$route.path].length !== this.contentList.length) {
+                  // 重新保存
+                  console.log('重新保存')
+                  this.showContentListArr = this.contentList
+                  this.save()
+                  return
+                } else {
+                  for (let i = 0; i < this.contentList.length; i++) {
+                    if (this.contentList[i].list.length !== this.getShowContentList[this.$route.path][i].list.length|| this.contentList[i].vision!==this.getShowContentList[this.$route.path][i].vision) {
+                      // 重新保存
+                      console.log('重新保存')
+                      this.showContentListArr = this.contentList
+                      this.save()
+                      return
+                    }
+                  }
+                }
+              }        
           this.showContentListArr = this.getShowContentList && this.getShowContentList[this.$route.path] ? this.getShowContentList[this.$route.path] : this.contentList
           this.showContentList = this.showContentListArr[this.active].list
           // console.log(this.showContentListArr)

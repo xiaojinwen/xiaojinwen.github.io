@@ -31,7 +31,7 @@
     <!--Title-->
 
 
-<title>hexo 常用命令 | 个人博客-xiaojinwen</title>
+<title>vue引入外部js | 个人博客-xiaojinwen</title>
 
 
     <link rel="alternate" href="/atom.xml" title="个人博客-xiaojinwen" type="application/atom+xml">
@@ -144,9 +144,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="hexo 常用命令">
+        <h1 id="vue引入外部js">
             
-	            hexo 常用命令
+	            vue引入外部js
             
         </h1>
         <div class="post-meta">
@@ -154,8 +154,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/其他">
-            其他
+        <a href="/categories/前端">
+            前端
         </a>
     </span>
     
@@ -165,8 +165,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/其他" title='其他'>
-                        其他
+                    <a href="/tags/前端" title='前端'>
+                        前端
                     </a>
                 
             
@@ -178,7 +178,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/08/30</span>
+            <span class="date-meta">2019/01/24</span>
         </span>
     
 </div>
@@ -188,16 +188,9 @@
     </div>
     
     <div class="post-body post-content">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<h3 id="列出已安装依赖-局部-全局"><a href="#列出已安装依赖-局部-全局" class="headerlink" title="列出已安装依赖(局部/全局)"></a>列出已安装依赖(局部/全局)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm ls --depth 0 </span><br><span class="line">$ npm ls --depth 0 -g</span><br></pre></td></tr></table></figure>
+        <h3 id="vue文件"><a href="#vue文件" class="headerlink" title=".vue文件"></a>.vue文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;remote-script src=&quot;http://vip.niukewang.com/static/niu/js/ksbaoname.js&quot;&gt;&lt;/remote-script&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        mounted() &#123;</span><br><span class="line">        	// 外部js里的变量</span><br><span class="line">            console.log(listlei)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入外部js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"> </span><br><span class="line">Vue.component(<span class="string">'remote-script'</span>, &#123;</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">return</span> createElement(<span class="string">'script'</span>, &#123;</span><br><span class="line">            attrs: &#123;</span><br><span class="line">                type: <span class="string">'text/javascript'</span>,</span><br><span class="line">                src: <span class="keyword">this</span>.src</span><br><span class="line">            &#125;,</span><br><span class="line">            on: &#123;</span><br><span class="line">                load: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">                    self.$emit(<span class="string">'load'</span>, event);</span><br><span class="line">                &#125;,</span><br><span class="line">                error: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">                    self.$emit(<span class="string">'error'</span>, event);</span><br><span class="line">                &#125;,</span><br><span class="line">                readystatechange: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">this</span>.readyState == <span class="string">'complete'</span>) &#123;</span><br><span class="line">                        self.$emit(<span class="string">'load'</span>, event);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    props: &#123;</span><br><span class="line">        src: &#123;</span><br><span class="line">            type: <span class="built_in">String</span>,</span><br><span class="line">            required: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="文件转载自vue-引入外部js文件-配置component"><a href="#文件转载自vue-引入外部js文件-配置component" class="headerlink" title="文件转载自vue 引入外部js文件 - 配置component"></a>文件转载自<a href="https://blog.csdn.net/zjl199303/article/details/82585775" target="_blank" rel="noopener">vue 引入外部js文件 - 配置component</a></h3>
     </div>
 
     <div class="post-footer">
@@ -214,15 +207,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/08/30/动态路由-路由访问权限/" class="pre-post btn btn-default" title='动态路由-路由访问权限'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">动态路由-路由访问权限</span>
-        </a>
     
-    
-        <a href="/2018/08/30/删除服务器乱码文件/" class="next-post btn btn-default" title='删除服务器乱码文件/目录'>
+        <a href="/2019/01/04/vue-element-控制字段排序与显示小组件/" class="next-post btn btn-default" title='vue-element-控制字段排序与显示小组件'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">删除服务器乱码文件/目录</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">vue-element-控制字段排序与显示小组件</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -265,7 +253,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列出已安装依赖-局部-全局"><span class="toc-text">列出已安装依赖(局部/全局)</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue文件"><span class="toc-text">.vue文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#main-js"><span class="toc-text">main.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件转载自vue-引入外部js文件-配置component"><span class="toc-text">文件转载自vue 引入外部js文件 - 配置component</span></a></li></ol>
         
     </div>
 </aside>
