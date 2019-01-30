@@ -73,7 +73,8 @@ window.onload = function() {
         if ($process) {
             $process.style.width = (getScrollTop() / ($body.scrollHeight - window.innerHeight)) * 100 + "%";
         }
-        (isPC && getScrollTop() >= 300) ? $backToTop.removeAttribute("class","hide") : $backToTop.setAttribute("class","hide");
+        // (isPC && getScrollTop() >= 300) ? $backToTop.removeAttribute("class","hide") : $backToTop.setAttribute("class","hide");
+        (isPC && getScrollTop() >= 700) ? $backToTop.setAttribute("class","back-to-top-show") : $backToTop.removeAttribute("class","back-to-top-show");
         imgsAjax($ajaxImgs);
     };
     scrollCallback();
