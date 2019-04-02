@@ -162,7 +162,7 @@ order-setting.vue
         this.showContentListArr[this.active].list = arr
       },
       save() {
-        let obj = Object.assign({}, this.getShowContentList, {
+        const obj = Object.assign({}, this.getShowContentList, {
           [this.$route.path]: this.showContentListArr
         });
         this.dialog = false;
@@ -182,7 +182,7 @@ order-setting.vue
                   console.log('重新保存')
                   this.showContentListArr = this.contentList
                   this.save()
-                  return
+                  return false
                 } else {
                   for (let i = 0; i < this.contentList.length; i++) {
                     if (this.contentList[i].list.length !== this.getShowContentList[this.$route.path][i].list.length|| this.contentList[i].vision!==this.getShowContentList[this.$route.path][i].vision) {
@@ -190,7 +190,7 @@ order-setting.vue
                       console.log('重新保存')
                       this.showContentListArr = this.contentList
                       this.save()
-                      return
+                      return false
                     }
                   }
                 }
@@ -206,33 +206,33 @@ order-setting.vue
         // console.log(this.showContentList)
       },
       handleCheckAllChange(val) {
-        if (val) {
-          for (let i = 0; i < this.showContentListArr.length; i++) {
-            this.showContentListArr[i].list.forEach((item) => {
-              item.show = false
-            })
-          }
-        } else {
-          this.showContentListArr = this.contentList
-        }
-        this.showContentList = this.showContentListArr[this.active].list
-        this.isIndeterminate = true;
+            for (let i = 0; i < this.showContentListArr.length; i++) {
+                this.showContentListArr[i].list.forEach((item) => {
+                    item.show = val
+                })
+            }
+            this.showContentList = this.showContentListArr[this.active].list
+            this.isIndeterminate = false
       },
       handleCheckedChange(value) {
-        let isCheckAll = false
-        let num = 0, total = 0
-        for (let i = 0; i < this.showContentListArr.length; i++) {
-          for (let n = 0; n < this.showContentListArr[i].list.length; n++) {
-            let item = this.showContentListArr[i].list[n]
-            if (item.show) {
-              isCheckAll = true
-              num++
+            let isCheckAll = false
+            let num = 0, total = 0
+            here:
+            for (let i = 0; i < this.showContentListArr.length; i++) {
+                for (let n = 0; n < this.showContentListArr[i].list.length; n++) {
+                    if (num > 0 && num < total) {
+                        break here;
+                    }
+                    let item = this.showContentListArr[i].list[n]
+                    if (item.show) {
+                        isCheckAll = true
+                        num++
+                    }
+                    total++
+                }
             }
-            total++
-          }
-        }
-        this.checkAll = isCheckAll;
-        this.isIndeterminate = num > 0 && num < total;
+            this.checkAll = isCheckAll;
+            this.isIndeterminate = num > 0 && num < total;
       },
       delTap(index) {
         this.showContentList[index].show = false;
@@ -246,7 +246,10 @@ order-setting.vue
       ...mapGetters(["getShowContentList"])
     },
     created() {
-        this.changeShowContent();
+        // setTimeout(() => {
+            this.changeShowContent();
+            this.handleCheckedChange()
+        // }, 0);
     },
     watch: {
       contentList() {
