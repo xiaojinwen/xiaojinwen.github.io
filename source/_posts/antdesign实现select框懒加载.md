@@ -15,6 +15,10 @@ select框 还可以搜索
 - 当select框选择内容滚动到底部 再增加条数
 - 输入搜索内容时 清空之前的option 替换为搜索匹配到的新option(不要去重新赋值一个数组，而是修改原来的数组)
 
+- 已知问题 initialValue值存在时会导致首次下拉选择框滚动到底部 加载更多option时的滚动条位置错误
+- 不完美的解决 push数据前先清楚 initialValue值 操作完再恢复 
+- 副作用 滚动到底部后select框的值会清空了 失焦后才恢复
+
 参考文章 https://www.cnblogs.com/clairelss/p/11063808.html
 ```javascript
 // 这是封装的组件  我拆出来了一部分
@@ -38,9 +42,9 @@ select框 还可以搜索
         @change="handleInputChange($event,item.decorator)"
         :disabled="item.disabled"
 
-        @popupScroll="searchScroll($event,item)"
-        @search="fetchSearchData($event,item)"
-        @dropdownVisibleChange="searchDropdownVisibleChange($event,item)">
+        @popupScroll="selectScroll($event,item)"
+        @search="fetchSelectSearchData($event,item)"
+        @dropdownVisibleChange="SelectDropdownVisibleChange($event,item)">
 <a-select-option :value="child.value"
                     v-for="(child,key) in item.options"
                     :key="key"
@@ -50,92 +54,136 @@ select框 还可以搜索
 
 上面要看的主要是 
 ``````
-@popupScroll="searchScroll($event,item)"
-@search="fetchSearchData($event,item)"
-@dropdownVisibleChange="searchDropdownVisibleChange($event,item)"
+@popupScroll="selectScroll($event,item)"
+@search="fetchSelectSearchData($event,item)"
+@dropdownVisibleChange="SelectDropdownVisibleChange($event,item)"
 ``````
 这三个回调 其他的不用看
 
 ```javascript
- // script部分
-/***
+ // script部分 mixin.ts
+import { Vue, Component } from 'vue-property-decorator'
+import {
+  deepClone,
+  isObject,
+  distinct
+} from '@/assets/ts';
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    timerId: number; // 用于防抖 解决输入框快速输入卡顿
+    dataLen: number; // 数据每次加载的条数
+    allOptionsDatakey: symbol; // 保存所有数据的 key
+    isReady: symbol; // 用于判断数据是否被自己修改过
+    searchValue: any; // 上一次输入框输入的值
+    originOptions: any[]; // 保存修改过的option
+    getSelectSearchDataList(item: any, value?: any): void; // 处理搜索和滚动时的数据
+    selectScroll(e: any, item: any): void; // select滚动时调用 @popupScroll回调
+    fetchSelectSearchData(value: any, item: any): void; // 输入内容搜索时调用 @search回调
+    SelectDropdownVisibleChange(e: any, item: any): void; // select内容选择框显示时调用 @dropdownVisibleChange回调
+  }
+}
+
+@Component
+export default class selecctMixin extends Vue {
+  /***
    * select 懒加载 开始
+   * 实现原理即是 手动去修改option的长度
+   * 
+   * 将所有的option保存起来 (SelectDropdownVisibleChange)
+   * 首次显示默认条数
+   * 当select框选择内容滚动到底部 再增加条数(不要去重新赋值一个数组，而是修改原来的数组)
+   * 输入搜索内容时 清空之前的option 替换为搜索匹配到的新option
+   * 
+   * 已知问题 initialValue值存在时会导致首次下拉选择框滚动到底部 加载更多option时的滚动条位置错误
+   * 不完美的解决 push数据前先清楚 initialValue值 操作完再恢复 
+   * 副作用 滚动到底部后select框的值会清空了 失焦后才恢复
    */
-   // 滚动回调
-  private searchScroll(e: any, item: any) {
-    const { target } = e;
-    // if (target.scrollTop + target.offsetHeight + 80 >= target.scrollHeight) {
+  timerId: number = 0; // 用于防抖 解决输入框快速输入卡顿
+  dataLen: number = 100; // 数据每次加载的条数
+  allOptionsDatakey: symbol = Symbol.for("allOptionsDatakey"); // 保存所有数据的 key
+  isReady: symbol = Symbol.for("isReady"); // 用于判断数据是否被自己修改过
+  searchValue: any; // 上一次输入框输入的值
+  originOptions: any[] = []; // 保存修改过的option
+  // select滚动时调用
+  selectScroll(e: any, item: any) {
+    const {
+      target
+    } = e;
     if (target.scrollTop + target.offsetHeight === target.scrollHeight) {
       item.scrollPage = item.scrollPage ? item.scrollPage + 1 : 1;
-      this.getSearchDataList(item, this.searchValue); // 调用api方法
-      // console.log("加载");
-      // console.log("this.searchValue", this.searchValue);
+      this.getSelectSearchDataList(item, this.searchValue); // 调用处理数据方法
     }
   }
 
-  private timerId: number = 0; // 用于防抖 解决输入框快速输入卡顿
-  private fetchSearchData(value: string, item: any) {
+  // 输入内容搜索时调用
+  fetchSelectSearchData(value: any, item: any) {
     if (this.timerId) {
       clearTimeout(this.timerId);
     }
     this.timerId = setTimeout(() => {
       item.scrollPage = 0;
-      // this.setState({ companyData: [], fetching: true });
-      this.getSearchDataList(item, value); // 关键字模糊查询api
+      this.getSelectSearchDataList(item, value); // 调用处理数据方法
       this.searchValue = value;
-      // console.log("搜索", value);
     }, 300);
   }
 
-  private dataLen: number = 100; // 数据每次加载的条数
-  // 查询数据
-  private getSearchDataList(item: any, value?: string) {
-    // console.log("item", item);
-    // console.log("item.scrollPage", item.scrollPage);
+  // 处理搜索和滚动时的数据
+  getSelectSearchDataList(item: any, searchValue?: any) {
     const start: number = item.scrollPage ? item.scrollPage * this.dataLen : 0;
-    const end: number = item.scrollPage
-      ? (item.scrollPage + 1) * this.dataLen
-      : this.dataLen;
+    const end: number = item.scrollPage ? (item.scrollPage + 1) * this.dataLen : this.dataLen;
     // console.log("start", start);
     // console.log("end", end);
-    // console.log("item.options", item.options);
-    const filterOption: any = value ? [] : item[this.allOptionsDatakey];
-    if (value) {
-      // console.log("匹配");
-      for (let innerItem of item[this.allOptionsDatakey]) {
-        new RegExp(value, "ig").test(
+    const allOptions: any[] = deepClone(item[this.allOptionsDatakey])
+    const filterOption: any[] = searchValue ? [] : allOptions;
+    // 执行 清空initialValue值之后 push完数据后再恢复原本值 原因是该值存在时会导致首次下拉选择框滚动到底部 加载更多option时的滚动条位置错误 如果没有这种问题可以不做此操作
+    const initialValue: any = item.initialValue
+    item.initialValue = undefined
+    if (searchValue) {
+      for (let innerItem of allOptions) {
+        new RegExp(searchValue, "ig").test(
           isObject(innerItem) ? innerItem.value : innerItem
         ) && filterOption.push(innerItem);
       }
     }
-    // 修改过输入框时 清空
-    this.searchValue !== value && item.options.splice(0);
-    // console.log("push", filterOption.slice(start, end));
-    filterOption.slice(start, end).length &&
-      item.options.push(...filterOption.slice(start, end));
+    // 修改过输入框时 options清空
+    this.searchValue !== searchValue && item.options.splice(0);
+    filterOption.slice(start, end).length && item.options.push(...filterOption.slice(start, end));
+    this.$nextTick(() => {
+      item.initialValue = initialValue
+    })
   }
 
-  private allOptionsDatakey: symbol = Symbol.for("allOptionsDatakey"); // 保存所有数据的 key
-  private isReady: symbol = Symbol.for("isReady"); // 用于判断数据是否被自己修改过
-  private searchValue: any; // 上一次输入框输入的值
-  private searchDropdownVisibleChange(e: any, item: any) {
-    // console.log('e', e);
-    console.log("item", item);
+  // select内容选择框显示时调用
+  SelectDropdownVisibleChange(visible: any, item: any) {
     if (!item[this.isReady]) {
-      // console.log("把所有的数据保存起来");
+      // 把所有的数据保存起来 并且标记状态
       item[this.isReady] = true;
-      // item[this.allOptionsDatakey] = Array.from(deepClone(item.options))
-      item[this.allOptionsDatakey] = deepClone(item.options);
-      item.options = (item.options || []).slice(0, this.dataLen);
-    } else {
-      // 赋值所有数据 只修改原数组
-      item.options.splice(0);
-      item.options.push(...item[this.allOptionsDatakey].slice(0, this.dataLen));
+      item[this.allOptionsDatakey] = deepClone(distinct(item.options));
+      this.originOptions.push(item)
     }
-    item.scrollPage = undefined;
-    this.searchValue = undefined;
+    // options赋值 this.dataLen 条数据
+    item.options = deepClone(item[this.allOptionsDatakey]).slice(0, this.dataLen)
+    if (!visible) {
+      item.scrollPage = undefined;
+      this.searchValue = undefined;
+    }
+  }
+
+  public beforeDestroy() {
+    // 恢复默认值
+    this.originOptions.forEach((item: any) => {
+      if (item[this.isReady]) {
+        item.options = deepClone(item[this.allOptionsDatakey])
+        delete item[this.allOptionsDatakey]
+        delete item[this.isReady]
+      }
+    });
+    this.originOptions = []
   }
   // select 懒加载结束
+}
+
 ```
 
 
