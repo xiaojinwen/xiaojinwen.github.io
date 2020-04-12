@@ -31,7 +31,7 @@
     <!--Title-->
 
 
-<title>将数组对象筛选处理合并成一个对象 | 个人博客-xiaojinwen</title>
+<title>解决移动端字体不能垂直居中 | 个人博客-xiaojinwen</title>
 
 
     <link rel="alternate" href="/atom.xml" title="个人博客-xiaojinwen" type="application/atom+xml">
@@ -144,9 +144,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="将数组对象筛选处理合并成一个对象">
+        <h1 id="解决移动端字体不能垂直居中">
             
-	            将数组对象筛选处理合并成一个对象
+	            解决移动端字体不能垂直居中
             
         </h1>
         <div class="post-meta">
@@ -178,23 +178,22 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/10/24</span>
+            <span class="date-meta">2020/04/13</span>
         </span>
     
 </div>
 
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>536</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>有时候我们获取的数据是一个数组对象,但是提交数据的时候又要你把数组转为对象其中还要筛选没用的key</p>
-<h3 id="例"><a href="#例" class="headerlink" title="例:"></a>例:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123; name: <span class="string">'我的'</span>, phone: <span class="string">'122222'</span>, ttt: <span class="string">'迟到了吗'</span> &#125;,</span><br><span class="line">	&#123; name: <span class="string">'我的'</span>, phone: <span class="string">'122222'</span>, ttt: <span class="string">'迟到了吗'</span> &#125;,</span><br><span class="line">	&#123; name: <span class="string">'我的'</span>, phone: <span class="string">'122222'</span>, ttt: <span class="string">'迟到了吗'</span> &#125;</span><br><span class="line">]</span><br><span class="line">处理为</span><br><span class="line"></span><br><span class="line">const obj =&#123; </span><br><span class="line">	name1: <span class="string">'我的'</span>, phone1: <span class="string">'122222'</span>,</span><br><span class="line">	name2: <span class="string">'我的'</span>, phone2: <span class="string">'122222'</span>, </span><br><span class="line">	name3: <span class="string">'我的'</span>, phone3: <span class="string">'122222'</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// filter 为筛选 项(即数组中的符合项)</span><br><span class="line">// map 为 处理每一项中 所需的内容(key)</span><br><span class="line">const arr = [</span><br><span class="line">	&#123; name: <span class="string">'我的'</span>, phone: <span class="string">'122222'</span>, ttt: <span class="string">'迟到了吗'</span> &#125;,</span><br><span class="line">	&#123; name: <span class="string">'我的'</span>, phone: <span class="string">'122222'</span>, ttt: <span class="string">'迟到了吗'</span> &#125;,</span><br><span class="line">	&#123; name: <span class="string">'我的'</span>, phone: <span class="string">'122222'</span>, ttt: <span class="string">'迟到了吗'</span> &#125;</span><br><span class="line">]</span><br><span class="line">const arr1 = arr.map((item, index) =&gt; &#123;</span><br><span class="line">	<span class="built_in">let</span> obj = &#123;&#125;</span><br><span class="line">	obj[`name<span class="variable">$&#123;index + 1&#125;</span>`] = item.name</span><br><span class="line">	obj[`phone<span class="variable">$&#123;index + 1&#125;</span>`] = item.phone</span><br><span class="line">	<span class="built_in">return</span> obj</span><br><span class="line">&#125;)</span><br><span class="line">// console.log(arr1)</span><br><span class="line">const obj = Object.assign(&#123;&#125;,...arr1)</span><br><span class="line">console.log(obj)</span><br></pre></td></tr></table></figure>
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><pre><code>最近遇到块状元素设置height以及line-height相同竟然不是垂直居中的问题,
+查了下资料说是字体大小设置不是偶数的问题
+但是项目中使用了rem 奇数比较难避免,目前有三种解决方法
+</code></pre><h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><h2 id="1、字体和line-height-height-设置大一倍-在用css3缩小一倍"><a href="#1、字体和line-height-height-设置大一倍-在用css3缩小一倍" class="headerlink" title="1、字体和line-height,height 设置大一倍 在用css3缩小一倍"></a>1、字体和line-height,height 设置大一倍 在用css3缩小一倍</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">line-height</span>: 44<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">height-height</span>: 44<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">font-size</span>: 24<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">transform</span> : <span class="selector-tag">scale</span>(0<span class="selector-class">.5</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="2、line-height设置为1-设置相同的上下padding"><a href="#2、line-height设置为1-设置相同的上下padding" class="headerlink" title="2、line-height设置为1,设置相同的上下padding"></a>2、line-height设置为1,设置相同的上下padding</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">line-height</span>: 24<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">font-size</span>: 12<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">padding-top</span>: 6<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">padding-bottom</span>: 6<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="3、设置1像素的透明border-盒模型改为border-box"><a href="#3、设置1像素的透明border-盒模型改为border-box" class="headerlink" title="3、设置1像素的透明border,盒模型改为border-box"></a>3、设置1像素的透明border,盒模型改为border-box</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">height</span>: <span class="selector-tag">xrem</span>;</span><br><span class="line"><span class="selector-tag">line-height</span>: <span class="selector-tag">xrem</span>;</span><br><span class="line"><span class="selector-tag">font-size</span>: <span class="selector-tag">xxrem</span>;</span><br><span class="line"><span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">transparent</span>;</span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">border-box</span>;</span><br></pre></td></tr></table></figure>
     </div>
 
     <div class="post-footer">
@@ -211,15 +210,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/10/25/es6学习/" class="pre-post btn btn-default" title='es6学习'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">es6学习</span>
-        </a>
     
-    
-        <a href="/2018/10/23/解决vue不能使用锚标记时的方法/" class="next-post btn btn-default" title='解决vue不能使用锚标记时的方法'>
+        <a href="/2020/03/11/页面切换关闭未完成的axios请求/" class="next-post btn btn-default" title='页面切换关闭未完成的axios请求'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">解决vue不能使用锚标记时的方法</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">页面切换关闭未完成的axios请求</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -262,7 +256,7 @@
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例"><span class="toc-text">例:</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解决"><span class="toc-text">解决</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、字体和line-height-height-设置大一倍-在用css3缩小一倍"><span class="toc-text">1、字体和line-height,height 设置大一倍 在用css3缩小一倍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、line-height设置为1-设置相同的上下padding"><span class="toc-text">2、line-height设置为1,设置相同的上下padding</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3、设置1像素的透明border-盒模型改为border-box"><span class="toc-text">3、设置1像素的透明border,盒模型改为border-box</span></a></li></ol></li></ol></li></ol>
         
     </div>
 </aside>
