@@ -1,8 +1,8 @@
 ---
 title: 完整的下载例子(node&js)
-date: 2020-6-11 22:00:49
-categories: ["前端", "后端"]
-tags: 前端
+date: 2020-6-11 22:30:49
+categories: ["后端"]
+tags: 后端
 comments: true
 ---
 
@@ -10,7 +10,7 @@ comments: true
 
 接口正常返回,content 字段内容为下载文件的 Buffer 数据
 
-# node(think.js)
+# 后端node(think.js)
 ```javascript
 ...省略部分
 const fs = require("fs");
@@ -35,7 +35,7 @@ return ctx.success({
 });
 ```
 
-# node(think.js)
+# 前端
 
 ```javascript
 ...省略部分
