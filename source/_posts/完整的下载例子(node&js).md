@@ -11,9 +11,6 @@ comments: true
 接口正常返回,content 字段内容为下载文件的 Buffer 数据
 
 # node(think.js)
-
-重新加载了一个未设置宽度的的图片 取出图片的宽高
-
 ```javascript
 ...省略部分
 const fs = require("fs");
