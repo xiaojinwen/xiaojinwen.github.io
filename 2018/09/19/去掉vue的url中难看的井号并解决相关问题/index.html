@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="个人博客-xiaojinwen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://xiaojw.xyz">
+    <!--SEO-->
+
+<meta name="description" content="个人日常">
+
+
+
+<meta name="keywords" content="blog">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>vue的url去掉难看的井号并解决相关问题 | 个人博客-xiaojinwen</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="个人博客-xiaojinwen" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='xiaojinwen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> Xiaojw博客-从入门到放弃 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://xiaojw.xyz">个人博客-xiaojinwen</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/服务器/"><i class="fa "></i>服务器</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/其他/"><i class="fa "></i>其他</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="vue的url去掉难看的井号并解决相关问题">
+            
+	            vue的url去掉难看的井号并解决相关问题
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/前端" title='前端'>
+                        前端
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/09/19</span>
+        </span>
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>1272</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="一、首先在路由文件配置history模式"><a href="#一、首先在路由文件配置history模式" class="headerlink" title="一、首先在路由文件配置history模式"></a>一、首先在路由文件配置history模式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 增加 mode: <span class="string">'history'</span></span><br><span class="line"><span class="built_in">export</span> default new Router(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/'</span>,</span><br><span class="line">      redirect: <span class="string">'/login'</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="二、使用history后一切都正常-唯有刷新浏览器的时候就不会加载了"><a href="#二、使用history后一切都正常-唯有刷新浏览器的时候就不会加载了" class="headerlink" title="二、使用history后一切都正常,唯有刷新浏览器的时候就不会加载了"></a>二、使用history后一切都正常,唯有刷新浏览器的时候就不会加载了</h2><p>因为刷新后 服务器上没有对应的静态页对应</p>
+<p>解决 将服务器上路径设置对应的定向</p>
+<h3 id="后端配置例子"><a href="#后端配置例子" class="headerlink" title="后端配置例子"></a>后端配置例子</h3><h4 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_rewrite.c&gt;</span><br><span class="line">  RewriteEngine On</span><br><span class="line">  RewriteBase /</span><br><span class="line">  RewriteRule ^index\.html$ - [L]</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</span><br><span class="line">  RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</span><br><span class="line">  RewriteRule . /index.html [L]</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<p>除了 mod_rewrite，你也可以使用 <a href="https://httpd.apache.org/docs/2.2/mod/mod_dir.html#fallbackresource" target="_blank" rel="noopener">FallbackResource</a></p>
+<h4 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">  try_files <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="原生-Node-js"><a href="#原生-Node-js" class="headerlink" title="原生 Node.js"></a>原生 Node.js</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const http = require(<span class="string">'http'</span>)</span><br><span class="line">const fs = require(<span class="string">'fs'</span>)</span><br><span class="line">const httpPort = 80</span><br><span class="line"></span><br><span class="line">http.createServer((req, res) =&gt; &#123;</span><br><span class="line">  fs.readFile(<span class="string">'index.htm'</span>, <span class="string">'utf-8'</span>, (err, content) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      console.log(<span class="string">'We cannot open "index.htm" file.'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res.writeHead(200, &#123;</span><br><span class="line">      <span class="string">'Content-Type'</span>: <span class="string">'text/html; charset=utf-8'</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    res.end(content)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).listen(httpPort, () =&gt; &#123;</span><br><span class="line">  console.log(<span class="string">'Server listening on: http://localhost:%s'</span>, httpPort)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="基于-Node-js-的-Express"><a href="#基于-Node-js-的-Express" class="headerlink" title="基于 Node.js 的 Express"></a>基于 Node.js 的 Express</h4><p>对于 Node.js/Express，请考虑使用<a href="https://github.com/bripkens/connect-history-api-fallback" target="_blank" rel="noopener">connect-history-api-fallback 中间件</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const express = require(<span class="string">'express'</span>);</span><br><span class="line">const <span class="built_in">history</span> = require(<span class="string">'connect-history-api-fallback'</span>);</span><br><span class="line">const app = express();</span><br><span class="line">app.use(<span class="built_in">history</span>(</span><br><span class="line">    &#123;</span><br><span class="line">        htmlAcceptHeaders: [<span class="string">'text/html'</span>, <span class="string">'application/xhtml+xml'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">));</span><br><span class="line">app.use(express.static(<span class="string">'dist'</span>));</span><br><span class="line">const server = app.listen(3002, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  const port = server.address().port;</span><br><span class="line">  console.log(`listening at http://localhost:<span class="variable">$&#123;port&#125;</span>`);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="Internet-Information-Services-IIS"><a href="#Internet-Information-Services-IIS" class="headerlink" title="Internet Information Services (IIS)"></a>Internet Information Services (IIS)</h4><p>1.安装 <a href="https://www.iis.net/downloads/microsoft/url-rewrite" target="_blank" rel="noopener">IIS UrlRewrite</a><br>2.在你的网站根目录中创建一个<code>web.config</code>文件，内容如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;system.webServer&gt;</span><br><span class="line">    &lt;rewrite&gt;</span><br><span class="line">      &lt;rules&gt;</span><br><span class="line">        &lt;rule name=<span class="string">"Handle History Mode and custom 404/500"</span> stopProcessing=<span class="string">"true"</span>&gt;</span><br><span class="line">          &lt;match url=<span class="string">"(.*)"</span> /&gt;</span><br><span class="line">          &lt;conditions logicalGrouping=<span class="string">"MatchAll"</span>&gt;</span><br><span class="line">            &lt;add input=<span class="string">"&#123;REQUEST_FILENAME&#125;"</span> matchType=<span class="string">"IsFile"</span> negate=<span class="string">"true"</span> /&gt;</span><br><span class="line">            &lt;add input=<span class="string">"&#123;REQUEST_FILENAME&#125;"</span> matchType=<span class="string">"IsDirectory"</span> negate=<span class="string">"true"</span> /&gt;</span><br><span class="line">          &lt;/conditions&gt;</span><br><span class="line">          &lt;action <span class="built_in">type</span>=<span class="string">"Rewrite"</span> url=<span class="string">"/"</span> /&gt;</span><br><span class="line">        &lt;/rule&gt;</span><br><span class="line">      &lt;/rules&gt;</span><br><span class="line">    &lt;/rewrite&gt;</span><br><span class="line">  &lt;/system.webServer&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Caddy"><a href="#Caddy" class="headerlink" title="Caddy"></a>Caddy</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rewrite &#123;</span><br><span class="line">    regexp .*</span><br><span class="line">    to &#123;path&#125; /</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Firebase-主机"><a href="#Firebase-主机" class="headerlink" title="Firebase 主机"></a>Firebase 主机</h4><p>在你的<code>firebase.json</code>中加入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"hosting"</span>: &#123;</span><br><span class="line">    <span class="string">"public"</span>: <span class="string">"dist"</span>,</span><br><span class="line">    <span class="string">"rewrites"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">"source"</span>: <span class="string">"**"</span>,</span><br><span class="line">        <span class="string">"destination"</span>: <span class="string">"/index.html"</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="警告"><a href="#警告" class="headerlink" title="警告"></a>警告</h2><p>因为这么做以后，你的服务器就不再返回 404 错误页面，因为对于所有路径都会返回 <code>index.html</code> 文件。为了避免这种情况，你应该在 Vue 应用里面覆盖所有的路由情况，然后在给出一个 404 页面。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: <span class="string">'*'</span>, component: NotFoundComponent &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>或者，如果你使用 Node.js 服务器，你可以用服务端路由匹配到来的 URL，并在没有匹配到路由的时候返回 404，以实现回退。更多详情请查阅 <a href="https://ssr.vuejs.org/zh/" target="_blank" rel="noopener">Vue 服务端渲染文档</a>。</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">xiaojinwen</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/09/20/iOS上输入框光标错位问题/" class="pre-post btn btn-default" title='iOS上输入框光标错位问题'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">iOS上输入框光标错位问题</span>
+        </a>
+    
+    
+        <a href="/2018/09/19/关于vue中修改UI库样式的坑/" class="next-post btn btn-default" title='关于vue中修改UI库样式的坑'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">关于vue中修改UI库样式的坑</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'OBEaVgVtX4RcSOo3GfvTegnT-gzGzoHsz',
+            appKey: 'o20EHecH1QoHIwMDHGhg9Qpq',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、首先在路由文件配置history模式"><span class="toc-text">一、首先在路由文件配置history模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、使用history后一切都正常-唯有刷新浏览器的时候就不会加载了"><span class="toc-text">二、使用history后一切都正常,唯有刷新浏览器的时候就不会加载了</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#后端配置例子"><span class="toc-text">后端配置例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Apache"><span class="toc-text">Apache</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx"><span class="toc-text">nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原生-Node-js"><span class="toc-text">原生 Node.js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于-Node-js-的-Express"><span class="toc-text">基于 Node.js 的 Express</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Internet-Information-Services-IIS"><span class="toc-text">Internet Information Services (IIS)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Caddy"><span class="toc-text">Caddy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Firebase-主机"><span class="toc-text">Firebase 主机</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#警告"><span class="toc-text">警告</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<!--<i class="fa fa-chevron-up"></i>-->
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span> | 
+				<span>Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+				</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

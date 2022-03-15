@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="个人博客-xiaojinwen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://xiaojw.xyz">
+    <!--SEO-->
+
+<meta name="description" content="个人日常">
+
+
+
+<meta name="keywords" content="blog">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>iOS上输入框光标错位问题 | 个人博客-xiaojinwen</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="个人博客-xiaojinwen" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='xiaojinwen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> Xiaojw博客-从入门到放弃 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://xiaojw.xyz">个人博客-xiaojinwen</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/服务器/"><i class="fa "></i>服务器</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/其他/"><i class="fa "></i>其他</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="iOS上输入框光标错位问题">
+            
+	            iOS上输入框光标错位问题
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/前端" title='前端'>
+                        前端
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/09/20</span>
+        </span>
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>1271</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="iOS上-fixed-元素内的输入元素-获取焦点时的光标错位问题-转载来源"><a href="#iOS上-fixed-元素内的输入元素-获取焦点时的光标错位问题-转载来源" class="headerlink" title="iOS上,fixed 元素内的输入元素,获取焦点时的光标错位问题 转载来源"></a>iOS上,fixed 元素内的输入元素,获取焦点时的光标错位问题 <a href="http://web.blued.cn/2017/12/15/ios-fixed-input-cursor-position/" target="_blank" rel="noopener">转载来源</a></h2><p>如果一个输入元素（input, textarea …）的父容器设置了 position: fixed，当这个元素获取焦点时，滚动网页光标便错位</p>
+<p><img src="http://web.xiaojw.xyz/blog_file/piaoyi.gif" alt="无法展示图片"></p>
+<blockquote>
+<p>遗憾的是，截至目前，iOS 11.x 上也有这个问题。</p>
+</blockquote>
+<h3 id="解决方法一-不使用fixed-布局"><a href="#解决方法一-不使用fixed-布局" class="headerlink" title="解决方法一:不使用fixed 布局"></a>解决方法一:不使用fixed 布局</h3><p>如果一定要使用请看下一种方法</p>
+<h3 id="解决方法二-动态改变布局方式"><a href="#解决方法二-动态改变布局方式" class="headerlink" title="解决方法二:动态改变布局方式"></a>解决方法二:动态改变布局方式</h3><p>当元素获取焦点时，改变父容器的定位方式：fixed &gt; absolute<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> evt of [<span class="string">'focus'</span>, <span class="string">'blur'</span>]) &#123;</span><br><span class="line">  const isFocus = evt === <span class="string">'focus'</span></span><br><span class="line">  const fn = isFocus ? <span class="string">'add'</span> : <span class="string">'remove'</span></span><br><span class="line"></span><br><span class="line">  inputDOMNode.addEventListener(evt, () =&gt; &#123;</span><br><span class="line">    parentDOMNode.classList[fn](<span class="string">'input-focus'</span>)</span><br><span class="line">    htmlDOMNode.classList[fn](<span class="string">'no-scroll'</span>)</span><br><span class="line">    bodyDOMNode.classList[fn](<span class="string">'no-scroll'</span>)</span><br><span class="line"></span><br><span class="line">    isFocus &amp;&amp; setScrollTop(0)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.input-focus &#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.no-scroll &#123;</span><br><span class="line">  height: 100%;</span><br><span class="line">  overflow: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>监听了输入元素 focus 和 blur 事件，为父元素添加或移除某些样式。</p>
+<blockquote>
+<p>当 position: absolute 时，输入框的定位方式需要手动设置（这里采取了顶部对齐）；.no-scroll 是为了禁止 body 的滚动，保证输入框可见。</p>
+</blockquote>
+<p>但是这个方案在部分 Android 设备上，当键盘收起时并不会触发输入元素的 blur 事件，往往还需要用户主动点击页面的其他区域，算是一点小遗憾吧。</p>
+<p>所以监听改变前先判断手机是ios还是android android就不监听</p>
+<h3 id="解决方法三-直接给html-body元素设置样式-推荐"><a href="#解决方法三-直接给html-body元素设置样式-推荐" class="headerlink" title="解决方法三:直接给html, body元素设置样式(推荐)"></a>解决方法三:直接给html, body元素设置样式(推荐)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">html,</span><br><span class="line">body &#123;</span><br><span class="line">  -webkit-overflow-scroll: touch !important;</span><br><span class="line">  overflow: auto !important;</span><br><span class="line">  height: 100% !important;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>-webkit-overflow-scrolling</code>控制元素在移动设备上是否使用滚动回弹效果。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-webkit-overflow-scrolling: touch; /* 当手指从触摸屏上移开，会保持一段时间的滚动 */</span><br><span class="line">overflow: auto; /* 由浏览器定夺，如果内容被修剪，就会显示滚动条 */</span><br></pre></td></tr></table></figure></p>
+<p>当输入元素获取焦点时，键盘弹起，输入元素被顶到了键盘的上方，此时用户的手指会从触摸屏上移开，输入元素会保持一段时间的滚动，从而光标的位置可以被正确计算。</p>
+<blockquote>
+<p>!important 在这里是为了防止这些属性会因为浏览器优先级过高而发生变化。有点小遗憾的是，!important 侵入性有些高。</p>
+</blockquote>
+<h3 id="解决方法四-IOS系统修复"><a href="#解决方法四-IOS系统修复" class="headerlink" title="解决方法四:IOS系统修复"></a>解决方法四:IOS系统修复</h3><p>慢慢等,说不定下一次更新也没有修复</p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">xiaojinwen</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/09/20/七牛云上传文件demo/" class="pre-post btn btn-default" title='七牛云上传文件demo'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">七牛云上传文件demo</span>
+        </a>
+    
+    
+        <a href="/2018/09/19/去掉vue的url中难看的井号并解决相关问题/" class="next-post btn btn-default" title='vue的url去掉难看的井号并解决相关问题'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">vue的url去掉难看的井号并解决相关问题</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'OBEaVgVtX4RcSOo3GfvTegnT-gzGzoHsz',
+            appKey: 'o20EHecH1QoHIwMDHGhg9Qpq',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS上-fixed-元素内的输入元素-获取焦点时的光标错位问题-转载来源"><span class="toc-text">iOS上,fixed 元素内的输入元素,获取焦点时的光标错位问题 转载来源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方法一-不使用fixed-布局"><span class="toc-text">解决方法一:不使用fixed 布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方法二-动态改变布局方式"><span class="toc-text">解决方法二:动态改变布局方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方法三-直接给html-body元素设置样式-推荐"><span class="toc-text">解决方法三:直接给html, body元素设置样式(推荐)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方法四-IOS系统修复"><span class="toc-text">解决方法四:IOS系统修复</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<!--<i class="fa fa-chevron-up"></i>-->
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span> | 
+				<span>Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+				</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="个人博客-xiaojinwen">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="https://xiaojw.xyz">
+    <!--SEO-->
+
+<meta name="description" content="个人日常">
+
+
+
+<meta name="keywords" content="blog">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+
+<title>antdesign实现select框懒加载 | 个人博客-xiaojinwen</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="个人博客-xiaojinwen" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='xiaojinwen'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> Xiaojw博客-从入门到放弃 </h2>
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://xiaojw.xyz">个人博客-xiaojinwen</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/服务器/"><i class="fa "></i>服务器</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/其他/"><i class="fa "></i>其他</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="antdesign实现select框懒加载">
+            
+	            antdesign实现select框懒加载
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/前端" title='前端'>
+                        前端
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/12/23</span>
+        </span>
+    
+</div>
+
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>813</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>select框 还可以搜索</p>
+<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p>即是手动去修改option的长度</p>
+<ul>
+<li>将所有的option保存起来</li>
+<li>首次显示默认条数</li>
+<li>当select框选择内容滚动到底部 再增加条数</li>
+<li><p>输入搜索内容时 清空之前的option 替换为搜索匹配到的新option(不要去重新赋值一个数组，而是修改原来的数组)</p>
+</li>
+<li><p>已知问题 initialValue值存在时会导致首次下拉选择框滚动到底部 加载更多option时的滚动条位置错误</p>
+</li>
+<li>不完美的解决 push数据前先清楚 initialValue值 操作完再恢复 </li>
+<li>副作用 滚动到底部后select框的值会清空了 失焦后才恢复</li>
+</ul>
+<p>参考文章 <a href="https://www.cnblogs.com/clairelss/p/11063808.html" target="_blank" rel="noopener">https://www.cnblogs.com/clairelss/p/11063808.html</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是封装的组件  我拆出来了一部分</span></span><br><span class="line"><span class="comment">// template 部分</span></span><br><span class="line">&lt;a-select allowClear</span><br><span class="line">        v-<span class="keyword">if</span>=<span class="string">"item.type == 'select'||item.type == 'multiple'"</span></span><br><span class="line">        :getPopupContainer=<span class="string">"triggerNode =&gt; triggerNode.parentNode"</span></span><br><span class="line">        :mode=<span class="string">"item.type == 'multiple'?'multiple':undefined"</span></span><br><span class="line">        :showSearch=<span class="string">"item.showSearch"</span></span><br><span class="line">        v-decorator=<span class="string">"[</span></span><br><span class="line"><span class="string">                    `$&#123;item.decorator&#125;`,</span></span><br><span class="line"><span class="string">                    &#123;</span></span><br><span class="line"><span class="string">                    rules: [&#123;</span></span><br><span class="line"><span class="string">                        required: item.required,</span></span><br><span class="line"><span class="string">                        message: `$&#123;item.Tips&#125; field should be no-null`,</span></span><br><span class="line"><span class="string">                    &#125;,...(item.rules &amp;&amp; item.rules instanceof Array ? item.rules : [])],</span></span><br><span class="line"><span class="string">                    initialValue:item.initialValue || undefined</span></span><br><span class="line"><span class="string">                    &#125;</span></span><br><span class="line"><span class="string">                ]"</span></span><br><span class="line">        :placeholder=<span class="string">"item.isShowPlaceHolder?item.Tips:''"</span></span><br><span class="line">        @change=<span class="string">"handleInputChange($event,item.decorator)"</span></span><br><span class="line">        :disabled=<span class="string">"item.disabled"</span></span><br><span class="line"></span><br><span class="line">        @popupScroll=<span class="string">"selectScroll($event,item)"</span></span><br><span class="line">        @search=<span class="string">"fetchSelectSearchData($event,item)"</span></span><br><span class="line">        @dropdownVisibleChange=<span class="string">"SelectDropdownVisibleChange($event,item)"</span>&gt;</span><br><span class="line">&lt;a-select-option :value=<span class="string">"child.value"</span></span><br><span class="line">                    v-<span class="keyword">for</span>=<span class="string">"(child,key) in item.options"</span></span><br><span class="line">                    :key=<span class="string">"key"</span></span><br><span class="line">                    :disabled=<span class="string">"child.disabled"</span>&gt;&#123;&#123;child.name&#125;&#125;&lt;<span class="regexp">/a-select-option&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>a-select&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上面要看的主要是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@popupScroll=&quot;selectScroll($event,item)&quot;</span><br><span class="line">@search=&quot;fetchSelectSearchData($event,item)&quot;</span><br><span class="line">@dropdownVisibleChange=&quot;SelectDropdownVisibleChange($event,item)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>这三个回调 其他的不用看</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// script部分 mixin.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; Vue, Component &#125; <span class="keyword">from</span> <span class="string">'vue-property-decorator'</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  deepClone,</span><br><span class="line">  isObject,</span><br><span class="line">  distinct</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@/assets/ts'</span>;</span><br><span class="line"></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">'vue/types/vue'</span> &#123;</span><br><span class="line">  interface Vue &#123;</span><br><span class="line">    timerId: number; <span class="comment">// 用于防抖 解决输入框快速输入卡顿</span></span><br><span class="line">    dataLen: number; <span class="comment">// 数据每次加载的条数</span></span><br><span class="line">    allOptionsDatakey: symbol; <span class="comment">// 保存所有数据的 key</span></span><br><span class="line">    isReady: symbol; <span class="comment">// 用于判断数据是否被自己修改过</span></span><br><span class="line">    searchValue: any; <span class="comment">// 上一次输入框输入的值</span></span><br><span class="line">    originOptions: any[]; <span class="comment">// 保存修改过的option</span></span><br><span class="line">    getSelectSearchDataList(item: any, value?: any): <span class="keyword">void</span>; <span class="comment">// 处理搜索和滚动时的数据</span></span><br><span class="line">    selectScroll(e: any, <span class="attr">item</span>: any): <span class="keyword">void</span>; <span class="comment">// select滚动时调用 @popupScroll回调</span></span><br><span class="line">    fetchSelectSearchData(value: any, <span class="attr">item</span>: any): <span class="keyword">void</span>; <span class="comment">// 输入内容搜索时调用 @search回调</span></span><br><span class="line">    SelectDropdownVisibleChange(e: any, <span class="attr">item</span>: any): <span class="keyword">void</span>; <span class="comment">// select内容选择框显示时调用 @dropdownVisibleChange回调</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">selecctMixin</span> <span class="keyword">extends</span> <span class="title">Vue</span> </span>&#123;</span><br><span class="line">  <span class="comment">/***</span></span><br><span class="line"><span class="comment">   * select 懒加载 开始</span></span><br><span class="line"><span class="comment">   * 实现原理即是 手动去修改option的长度</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 将所有的option保存起来 (SelectDropdownVisibleChange)</span></span><br><span class="line"><span class="comment">   * 首次显示默认条数</span></span><br><span class="line"><span class="comment">   * 当select框选择内容滚动到底部 再增加条数(不要去重新赋值一个数组，而是修改原来的数组)</span></span><br><span class="line"><span class="comment">   * 输入搜索内容时 清空之前的option 替换为搜索匹配到的新option</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * 已知问题 initialValue值存在时会导致首次下拉选择框滚动到底部 加载更多option时的滚动条位置错误</span></span><br><span class="line"><span class="comment">   * 不完美的解决 push数据前先清楚 initialValue值 操作完再恢复 </span></span><br><span class="line"><span class="comment">   * 副作用 滚动到底部后select框的值会清空了 失焦后才恢复</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  timerId: number = <span class="number">0</span>; <span class="comment">// 用于防抖 解决输入框快速输入卡顿</span></span><br><span class="line">  dataLen: number = <span class="number">100</span>; <span class="comment">// 数据每次加载的条数</span></span><br><span class="line">  allOptionsDatakey: symbol = <span class="built_in">Symbol</span>.for(<span class="string">"allOptionsDatakey"</span>); <span class="comment">// 保存所有数据的 key</span></span><br><span class="line">  isReady: symbol = <span class="built_in">Symbol</span>.for(<span class="string">"isReady"</span>); <span class="comment">// 用于判断数据是否被自己修改过</span></span><br><span class="line">  searchValue: any; <span class="comment">// 上一次输入框输入的值</span></span><br><span class="line">  originOptions: any[] = []; <span class="comment">// 保存修改过的option</span></span><br><span class="line">  <span class="comment">// select滚动时调用</span></span><br><span class="line">  selectScroll(e: any, <span class="attr">item</span>: any) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;</span><br><span class="line">      target</span><br><span class="line">    &#125; = e;</span><br><span class="line">    <span class="keyword">if</span> (target.scrollTop + target.offsetHeight === target.scrollHeight) &#123;</span><br><span class="line">      item.scrollPage = item.scrollPage ? item.scrollPage + <span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">this</span>.getSelectSearchDataList(item, <span class="keyword">this</span>.searchValue); <span class="comment">// 调用处理数据方法</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 输入内容搜索时调用</span></span><br><span class="line">  fetchSelectSearchData(value: any, <span class="attr">item</span>: any) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.timerId) &#123;</span><br><span class="line">      clearTimeout(<span class="keyword">this</span>.timerId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.timerId = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      item.scrollPage = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">this</span>.getSelectSearchDataList(item, value); <span class="comment">// 调用处理数据方法</span></span><br><span class="line">      <span class="keyword">this</span>.searchValue = value;</span><br><span class="line">    &#125;, <span class="number">300</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 处理搜索和滚动时的数据</span></span><br><span class="line">  getSelectSearchDataList(item: any, searchValue?: any) &#123;</span><br><span class="line">    <span class="keyword">const</span> start: number = item.scrollPage ? item.scrollPage * <span class="keyword">this</span>.dataLen : <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> end: number = item.scrollPage ? (item.scrollPage + <span class="number">1</span>) * <span class="keyword">this</span>.dataLen : <span class="keyword">this</span>.dataLen;</span><br><span class="line">    <span class="comment">// console.log("start", start);</span></span><br><span class="line">    <span class="comment">// console.log("end", end);</span></span><br><span class="line">    <span class="keyword">const</span> allOptions: any[] = deepClone(item[<span class="keyword">this</span>.allOptionsDatakey])</span><br><span class="line">    <span class="keyword">const</span> filterOption: any[] = searchValue ? [] : allOptions;</span><br><span class="line">    <span class="comment">// 执行 清空initialValue值之后 push完数据后再恢复原本值 原因是该值存在时会导致首次下拉选择框滚动到底部 加载更多option时的滚动条位置错误 如果没有这种问题可以不做此操作</span></span><br><span class="line">    <span class="keyword">const</span> initialValue: any = item.initialValue</span><br><span class="line">    item.initialValue = <span class="literal">undefined</span></span><br><span class="line">    <span class="keyword">if</span> (searchValue) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> innerItem <span class="keyword">of</span> allOptions) &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="built_in">RegExp</span>(searchValue, <span class="string">"ig"</span>).test(</span><br><span class="line">          isObject(innerItem) ? innerItem.value : innerItem</span><br><span class="line">        ) &amp;&amp; filterOption.push(innerItem);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 修改过输入框时 options清空</span></span><br><span class="line">    <span class="keyword">this</span>.searchValue !== searchValue &amp;&amp; item.options.splice(<span class="number">0</span>);</span><br><span class="line">    filterOption.slice(start, end).length &amp;&amp; item.options.push(...filterOption.slice(start, end));</span><br><span class="line">    <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      item.initialValue = initialValue</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// select内容选择框显示时调用</span></span><br><span class="line">  SelectDropdownVisibleChange(visible: any, <span class="attr">item</span>: any) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!item[<span class="keyword">this</span>.isReady]) &#123;</span><br><span class="line">      <span class="comment">// 把所有的数据保存起来 并且标记状态</span></span><br><span class="line">      item[<span class="keyword">this</span>.isReady] = <span class="literal">true</span>;</span><br><span class="line">      item[<span class="keyword">this</span>.allOptionsDatakey] = deepClone(distinct(item.options));</span><br><span class="line">      <span class="keyword">this</span>.originOptions.push(item)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// options赋值 this.dataLen 条数据</span></span><br><span class="line">    item.options = deepClone(item[<span class="keyword">this</span>.allOptionsDatakey]).slice(<span class="number">0</span>, <span class="keyword">this</span>.dataLen)</span><br><span class="line">    <span class="keyword">if</span> (!visible) &#123;</span><br><span class="line">      item.scrollPage = <span class="literal">undefined</span>;</span><br><span class="line">      <span class="keyword">this</span>.searchValue = <span class="literal">undefined</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public beforeDestroy() &#123;</span><br><span class="line">    <span class="comment">// 恢复默认值</span></span><br><span class="line">    <span class="keyword">this</span>.originOptions.forEach(<span class="function">(<span class="params">item: any</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (item[<span class="keyword">this</span>.isReady]) &#123;</span><br><span class="line">        item.options = deepClone(item[<span class="keyword">this</span>.allOptionsDatakey])</span><br><span class="line">        <span class="keyword">delete</span> item[<span class="keyword">this</span>.allOptionsDatakey]</span><br><span class="line">        <span class="keyword">delete</span> item[<span class="keyword">this</span>.isReady]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.originOptions = []</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// select 懒加载结束</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">xiaojinwen</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2020/03/11/页面切换关闭未完成的axios请求/" class="pre-post btn btn-default" title='页面切换关闭未完成的axios请求'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">页面切换关闭未完成的axios请求</span>
+        </a>
+    
+    
+        <a href="/2019/04/01/vue-cli3-配cdn/" class="next-post btn btn-default" title='vue-cli3-配cdn'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">vue-cli3-配cdn</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'OBEaVgVtX4RcSOo3GfvTegnT-gzGzoHsz',
+            appKey: 'o20EHecH1QoHIwMDHGhg9Qpq',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现原理"><span class="toc-text">实现原理</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<!--<i class="fa fa-chevron-up"></i>-->
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span> | 
+				<span>Hosted by <a href="https://coding.net/pages" target="_blank">Coding Pages</a>
+				</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
